@@ -46,7 +46,13 @@
 
             <li class="sidebar-item @yield('projects-active')">
                 <a class="sidebar-link" href="{{ route('projects.index') }}">
-                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Proyek</span>
+                    <i class="align-middle" data-feather="star"></i> <span class="align-middle">Proyek</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item @yield('tasks-active')">
+                <a class="sidebar-link" href="{{ route('tasks.index') }}">
+                    <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Tugas</span>
                 </a>
             </li>
 
