@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\JournalController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\JournalController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +23,14 @@ Route::get('/data', [DashboardController::class, 'data'])->name('dashboard.data'
 Route::get('/neracaBulanLaluDanBulanIni', [DashboardController::class, 'neracaBulanLaluDanBulanIni'])->name('dashboard.neracaBulanLaluDanBulanIni');
 Route::get('/neracaSampaiDenganBulanLaluDanBulanIni', [DashboardController::class, 'neracaSampaiDenganBulanLaluDanBulanIni'])->name('dashboard.neracaSampaiDenganBulanLaluDanBulanIni');
 Route::get('/pendapatanBebanBulanIni', [DashboardController::class, 'pendapatanBebanBulanIni'])->name('dashboard.pendapatanBebanBulanIni');
+
+// Keuangan
 Route::resource('accounts', AccountController::class);
 Route::resource('journals', JournalController::class);
+
+// Jadwal
+Route::resource('schedules', ScheduleController::class);
+
+// Pekerjaan
+Route::resource('projects', ProjectController::class);
+

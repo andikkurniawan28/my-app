@@ -14,6 +14,10 @@
                 </a>
             </li>
 
+            <li class="sidebar-header">
+                Keuangan
+            </li>
+
             <li class="sidebar-item @yield('accounts-active')">
                 <a class="sidebar-link" href="{{ route('accounts.index') }}">
                     <i class="align-middle" data-feather="database"></i> <span class="align-middle">Akun</span>
@@ -23,6 +27,26 @@
             <li class="sidebar-item @yield('journals-active')">
                 <a class="sidebar-link" href="{{ route('journals.index') }}">
                     <i class="align-middle" data-feather="edit-3"></i> <span class="align-middle">Jurnal</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
+                Jadwal
+            </li>
+
+            <li class="sidebar-item @yield('schedules-active')">
+                <a class="sidebar-link" href="{{ route('schedules.index') }}">
+                    <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Jadwal</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
+                Pekerjaan
+            </li>
+
+            <li class="sidebar-item @yield('projects-active')">
+                <a class="sidebar-link" href="{{ route('projects.index') }}">
+                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Proyek</span>
                 </a>
             </li>
 
