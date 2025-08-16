@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Models\Task;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,11 +22,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (
-            app()->environment('production') ||
-            Str::contains(request()->getHost(), 'ngrok')
-        ) {
-            URL::forceScheme('https');
+
+        // Paksa https di production/ngrok
+        (app()->environment('production') || Str::contains(request()->getHost(), 'ngrok'))
+            ? URL::forceScheme('https')
+            : null;
+
+        // Reset harian jika jam 6 pagi
+        now()->hour == 6
+            ? Task::where('tipe', 'harian')->update(['status' => 'belum_dimulai'])
+            : null;
         }
-    }
 }

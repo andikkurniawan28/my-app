@@ -28,6 +28,9 @@ Route::get('/neracaSampaiDenganBulanLaluDanBulanIni', [DashboardController::clas
 Route::get('/pendapatanBebanBulanIni', [DashboardController::class, 'pendapatanBebanBulanIni'])->name('dashboard.pendapatanBebanBulanIni');
 Route::get('/jadwalMenunggu', [DashboardController::class, 'jadwalMenunggu'])->name('dashboard.jadwalMenunggu');
 Route::get('/proyekBelumDimulai', [DashboardController::class, 'proyekBelumDimulai'])->name('dashboard.proyekBelumDimulai');
+Route::get('/tugasBelumSelesai', [DashboardController::class, 'tugasBelumSelesai'])->name('dashboard.tugasBelumSelesai');
+Route::post('/selesaikanTugas', [DashboardController::class, 'selesaikanTugas'])
+    ->name('dashboard.selesaikanTugas');
 
 // Keuangan
 Route::resource('accounts', AccountController::class);

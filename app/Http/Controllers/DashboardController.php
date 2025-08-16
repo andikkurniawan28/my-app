@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\Task;
 use App\Models\Project;
 use App\Models\Schedule;
 use Illuminate\Http\Request;
@@ -238,5 +239,13 @@ class DashboardController extends Controller
         return Project::proyekBelumDimulai();
     }
 
+    public function tugasBelumSelesai(){
+        return Task::tugasBelumSelesai();
+    }
+
+    public function selesaikanTugas(Request $request) {
+        Task::whereId($request->id)->update(['status' => 'selesai']);
+        return redirect()->back()->with('success', 'Tugas berhasil diselesaikan.');
+    }
 
 }

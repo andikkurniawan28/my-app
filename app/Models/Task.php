@@ -14,4 +14,11 @@ class Task extends Model
     public function project(){
         return $this->belongsTo(Project::class);
     }
+
+    public static function tugasBelumSelesai(){
+        return Task::select(['id', 'title', 'description'])
+            ->where('status', 'belum_dimulai')
+            ->orderBy('id', 'asc')
+            ->get();
+    }
 }

@@ -15,7 +15,6 @@ class Project extends Model
     /**
      * Function untuk mengambil proyek yang belum dimulai
      */
-    // Proyek Belum Dimulai
     public static function proyekBelumDimulai()
     {
         return Project::select(['id', 'title', 'description', 'deadline'])
@@ -23,7 +22,12 @@ class Project extends Model
             ->orderBy('deadline', 'asc')
             ->get()
             ->map(function ($item) {
-                $item->deadline = Carbon::parse($item->deadline)->format('d/m/Y');
+                // Set locale Indonesia
+                $carbon = Carbon::parse($item->date)->locale('id');
+
+                // Format dengan hari
+                $item->deadline = $carbon->translatedFormat('l, d/m/Y');
+                // contoh output: "Sabtu, 16/08/2025"
                 return $item;
             });
     }
