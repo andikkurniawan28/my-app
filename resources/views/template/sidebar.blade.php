@@ -14,9 +14,9 @@
                 </a>
             </li>
 
-            <li class="sidebar-header">
+            {{-- <li class="sidebar-header">
                 Keuangan
-            </li>
+            </li> --}}
 
             <li class="sidebar-item @yield('accounts-active')">
                 <a class="sidebar-link" href="{{ route('accounts.index') }}">
@@ -30,9 +30,9 @@
                 </a>
             </li>
 
-            <li class="sidebar-header">
+            {{-- <li class="sidebar-header">
                 Jadwal
-            </li>
+            </li> --}}
 
             <li class="sidebar-item @yield('schedules-active')">
                 <a class="sidebar-link" href="{{ route('schedules.index') }}">
@@ -40,9 +40,9 @@
                 </a>
             </li>
 
-            <li class="sidebar-header">
+            {{-- <li class="sidebar-header">
                 Pekerjaan
-            </li>
+            </li> --}}
 
             <li class="sidebar-item @yield('projects-active')">
                 <a class="sidebar-link" href="{{ route('projects.index') }}">
@@ -53,6 +53,26 @@
             <li class="sidebar-item @yield('tasks-active')">
                 <a class="sidebar-link" href="{{ route('tasks.index') }}">
                     <i class="align-middle" data-feather="check-circle"></i> <span class="align-middle">Tugas</span>
+                </a>
+            </li>
+
+            {{-- <li class="sidebar-header">
+                Penyimpanan
+            </li> --}}
+
+            <li class="sidebar-item @yield('items-active')">
+                <a class="sidebar-link" href="{{ route('items.index') }}">
+                    <i class="align-middle" data-feather="package"></i> <span class="align-middle">Barang Penting</span>
+                </a>
+            </li>
+
+            {{-- <li class="sidebar-header">
+                Kesehatan
+            </li> --}}
+
+            <li class="sidebar-item @yield('medicalRecords-active')">
+                <a class="sidebar-link" href="{{ route('medicalRecords.index') }}">
+                    <i class="align-middle" data-feather="book-open"></i> <span class="align-middle">Rekam Medis</span>
                 </a>
             </li>
 

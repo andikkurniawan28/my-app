@@ -25,8 +25,8 @@
                                 <th>Tanggal</th>
                                 <th>Judul</th>
                                 <th>Deskripsi</th>
-                                <th>Waktu Mulai</th>
-                                <th>Waktu Selesai</th>
+                                <th>Mulai</th>
+                                <th>Selesai</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>

@@ -2,123 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Project;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
     public function index()
     {
         return view('welcome');
-    }
-
-    public function data()
-    {
-        $now = now();
-        $thisMonth = $now->month;
-        $thisYear = $now->year;
-
-        $lastMonth = $now->copy()->subMonth();
-        $lastMonthNum = $lastMonth->month;
-        $lastMonthYear = $lastMonth->year;
-
-        $results = DB::table('journal_details')
-            ->join('journals', 'journal_details.journal_id', '=', 'journals.id')
-            ->join('accounts', 'journal_details.account_id', '=', 'accounts.id')
-            ->select(
-                'accounts.id',
-                'accounts.name',
-                'accounts.category',
-                'accounts.normal_balance',
-                DB::raw("
-                SUM(
-                    CASE
-                        WHEN MONTH(journals.date) = {$thisMonth} AND YEAR(journals.date) = {$thisYear}
-                        THEN
-                            CASE
-                                WHEN accounts.normal_balance = 'debit'
-                                THEN journal_details.debit - journal_details.credit
-                                ELSE journal_details.credit - journal_details.debit
-                            END
-                        ELSE 0
-                    END
-                ) as saldo_bulan_ini
-            "),
-                DB::raw("
-                SUM(
-                    CASE
-                        WHEN MONTH(journals.date) = {$lastMonthNum} AND YEAR(journals.date) = {$lastMonthYear}
-                        THEN
-                            CASE
-                                WHEN accounts.normal_balance = 'debit'
-                                THEN journal_details.debit - journal_details.credit
-                                ELSE journal_details.credit - journal_details.debit
-                            END
-                        ELSE 0
-                    END
-                ) as saldo_bulan_lalu
-            "),
-                DB::raw("
-                SUM(
-                    CASE
-                        WHEN accounts.normal_balance = 'debit'
-                        THEN journal_details.debit - journal_details.credit
-                        ELSE journal_details.credit - journal_details.debit
-                    END
-                ) as saldo_sd_saat_ini
-            ")
-            )
-            ->groupBy('accounts.id', 'accounts.name', 'accounts.category', 'accounts.normal_balance')
-            ->get();
-
-        // Proses di PHP
-        $neracaBulanIni = [];
-        $neracaBulanLalu = [];
-        $saldoKategori = [];
-        $kategoriBulanIni = [];
-        $kategoriBulanLalu = [];
-        $biayaTerbesar = [];
-        $pendapatanTerbesar = [];
-
-        foreach ($results as $row) {
-            $neracaBulanIni[$row->name] = $row->saldo_bulan_ini;
-            $neracaBulanLalu[$row->name] = $row->saldo_bulan_lalu;
-
-            $saldoKategori[$row->category] = ($saldoKategori[$row->category] ?? 0) + $row->saldo_sd_saat_ini;
-
-            $kategoriBulanIni[$row->category] = ($kategoriBulanIni[$row->category] ?? 0) + $row->saldo_bulan_ini;
-            $kategoriBulanLalu[$row->category] = ($kategoriBulanLalu[$row->category] ?? 0) + $row->saldo_bulan_lalu;
-
-            if ($row->category === 'expense') {
-                $biayaTerbesar[] = ['name' => $row->name, 'saldo' => $row->saldo_sd_saat_ini];
-            }
-            if ($row->category === 'revenue') {
-                $pendapatanTerbesar[] = ['name' => $row->name, 'saldo' => $row->saldo_sd_saat_ini];
-            }
-        }
-
-        // Urutkan daftar terbesar
-        usort($biayaTerbesar, fn($a, $b) => $b['saldo'] <=> $a['saldo']);
-        usort($pendapatanTerbesar, fn($a, $b) => $b['saldo'] <=> $a['saldo']);
-
-        $labaRugi = ($kategoriBulanIni['revenue'] ?? 0) - ($kategoriBulanIni['expense'] ?? 0);
-        $hutangPiutang = ($saldoKategori['asset'] ?? 0) - ($saldoKategori['liability'] ?? 0);
-
-        return [
-            'Neraca Bulan Ini' => $neracaBulanIni,
-            'Neraca Bulan Lalu' => $neracaBulanLalu,
-            'Laporan Laba Rugi' => $labaRugi,
-            'Saldo Asset s/d Saat Ini' => $saldoKategori['asset'] ?? 0,
-            'Saldo Hutang s/d Saat Ini' => $saldoKategori['liability'] ?? 0,
-            'Saldo Pendapatan Bulan Ini' => $kategoriBulanIni['revenue'] ?? 0,
-            'Saldo Pendapatan Bulan Lalu' => $kategoriBulanLalu['revenue'] ?? 0,
-            'Saldo Biaya Bulan Ini' => $kategoriBulanIni['expense'] ?? 0,
-            'Saldo Biaya Bulan Lalu' => $kategoriBulanLalu['expense'] ?? 0,
-            'Daftar Biaya Terbesar' => array_slice($biayaTerbesar, 0, 5),
-            'Daftar Pendapatan Terbesar' => array_slice($pendapatanTerbesar, 0, 5),
-            'Hutang Piutang' => $hutangPiutang
-        ];
     }
 
     public function neracaBulanLaluDanBulanIni()
@@ -334,6 +228,14 @@ class DashboardController extends Controller
             'top_pendapatan'   => $topPendapatan,
             'top_beban'        => $topBeban
         ]);
+    }
+
+    public function jadwalMenunggu(){
+        return Schedule::jadwalMenunggu();
+    }
+
+    public function proyekBelumDimulai(){
+        return Project::proyekBelumDimulai();
     }
 
 

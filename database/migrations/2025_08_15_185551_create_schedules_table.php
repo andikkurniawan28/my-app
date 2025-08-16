@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
+            $table->date('date')->index();
             $table->string('title');
             $table->string('description');
             $table->time('start_time');
             $table->time('finish_time');
             $table->enum('status', [
                 'menunggu', 'berlangsung', 'selesai', 'dibatalkan'
-            ])->default('menunggu');
+            ])->default('menunggu')->index();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

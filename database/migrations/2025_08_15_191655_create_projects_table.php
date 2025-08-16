@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->date('deadline');
+            $table->date('deadline')->index();
             $table->enum('status', [
                 'belum_dimulai',
                 'sedang_berjalan',
                 'selesai',
                 'dibatalkan'
-            ])->default('belum_dimulai');
+            ])->default('belum_dimulai')->index();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

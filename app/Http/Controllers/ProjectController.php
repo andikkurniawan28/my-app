@@ -64,7 +64,7 @@ class ProjectController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'deadline' => 'required|date',
-            'status' => 'required|in:belum_dimulai,sedang_berjalan,selesai,dibatalkan',
+            // 'status' => 'required|in:belum_dimulai,sedang_berjalan,selesai,dibatalkan',
         ]);
 
         Project::create($request->all());

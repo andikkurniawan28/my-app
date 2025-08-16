@@ -7,6 +7,8 @@ use App\Http\Controllers\JournalController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ItemController;
+use App\Http\Controllers\MedicalRecordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,8 @@ Route::get('/data', [DashboardController::class, 'data'])->name('dashboard.data'
 Route::get('/neracaBulanLaluDanBulanIni', [DashboardController::class, 'neracaBulanLaluDanBulanIni'])->name('dashboard.neracaBulanLaluDanBulanIni');
 Route::get('/neracaSampaiDenganBulanLaluDanBulanIni', [DashboardController::class, 'neracaSampaiDenganBulanLaluDanBulanIni'])->name('dashboard.neracaSampaiDenganBulanLaluDanBulanIni');
 Route::get('/pendapatanBebanBulanIni', [DashboardController::class, 'pendapatanBebanBulanIni'])->name('dashboard.pendapatanBebanBulanIni');
+Route::get('/jadwalMenunggu', [DashboardController::class, 'jadwalMenunggu'])->name('dashboard.jadwalMenunggu');
+Route::get('/proyekBelumDimulai', [DashboardController::class, 'proyekBelumDimulai'])->name('dashboard.proyekBelumDimulai');
 
 // Keuangan
 Route::resource('accounts', AccountController::class);
@@ -36,3 +40,8 @@ Route::resource('schedules', ScheduleController::class);
 Route::resource('projects', ProjectController::class);
 Route::resource('tasks', TaskController::class);
 
+// Penyimpanan
+Route::resource('items', ItemController::class);
+
+// Kesehatan
+Route::resource('medicalRecords', MedicalRecordController::class);

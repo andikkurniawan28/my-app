@@ -63,7 +63,7 @@ class ScheduleController extends Controller
             'description' => 'required|string',
             'start_time' => 'required',
             'finish_time' => 'required',
-            'status' => 'required|in:menunggu,berlangsung,selesai,dibatalkan',
+            // 'status' => 'required|in:menunggu,berlangsung,selesai,dibatalkan',
         ]);
 
         Schedule::create($request->all());

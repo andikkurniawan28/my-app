@@ -34,7 +34,7 @@
                     @error('deadline')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="status" class="form-label">Status</label>
                     <select name="status" id="status" class="form-select @error('status') is-invalid @enderror" required>
                         <option value="">-- Pilih Status --</option>
@@ -45,7 +45,7 @@
                         @endforeach
                     </select>
                     @error('status')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                </div>
+                </div> --}}
 
                 <div class="d-flex justify-content-between">
                     <a href="{{ route('projects.index') }}" class="btn btn-secondary">Kembali</a>

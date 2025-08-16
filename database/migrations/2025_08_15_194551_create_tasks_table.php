@@ -20,12 +20,12 @@ return new class extends Migration
                 'harian',
                 'project',
                 'ad_hoc'
-            ])->default('harian');
+            ])->default('harian')->index();
             $table->enum('status', [
                 'belum_dimulai',
                 'sedang_berjalan',
                 'selesai'
-            ])->default('belum_dimulai');
+            ])->default('belum_dimulai')->index();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
