@@ -20,7 +20,9 @@ class ScheduleController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('date', function ($row) {
-                    return Carbon::parse($row->date)->format('d/m/Y');
+                    $carbon = Carbon::parse($row->date)->locale('id');
+                    $row->date = $carbon->translatedFormat('l, d/m/Y');
+                    return $row->date;
                 })
                 ->addColumn('action', function ($row) {
                     $editUrl = route('schedules.edit', $row->id);

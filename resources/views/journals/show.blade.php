@@ -10,7 +10,7 @@
             <div class="card-body">
                 <p>
                     <strong>Tanggal:</strong>
-                    {{ \Carbon\Carbon::parse($journal->date)->locale('id')->translatedFormat('d F Y') }}
+                    {{ \Carbon\Carbon::parse($journal->date)->locale('id')->translatedFormat('l, d/m/Y') }}
                 </p>
                 <p><strong>Keterangan:</strong> {{ $journal->description }}</p>
 

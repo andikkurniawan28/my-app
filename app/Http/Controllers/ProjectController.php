@@ -20,7 +20,9 @@ class ProjectController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('deadline', function ($row) {
-                    return Carbon::parse($row->deadline)->format('d/m/Y');
+                    $carbon = Carbon::parse($row->deadline)->locale('id');
+                    $row->deadline = $carbon->translatedFormat('l, d/m/Y');
+                    return $row->deadline;
                 })
                 ->editColumn('status', function ($row) {
                     return ucfirst(str_replace('_', ' ', $row->status));

@@ -18,7 +18,7 @@ class Project extends Model
     public static function proyekBelumDimulai()
     {
         return Project::select(['id', 'title', 'description', 'deadline'])
-            ->where('status', 'belum_dimulai')
+            ->where('status', '!=', 'selesai')
             ->orderBy('deadline', 'asc')
             ->get()
             ->map(function ($item) {

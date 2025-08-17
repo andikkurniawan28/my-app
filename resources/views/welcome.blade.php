@@ -4,14 +4,14 @@
 
 @section('content')
     <div class="container-fluid py-0 px-0">
-        <h1 class="h3 mb-3"><strong>Dashboard</strong></h1>
+        <h1 class="h3 mb-4"><strong>Dashboard</strong></h1>
 
         <!-- Jadwal, Proyek & Tugas -->
         <h4 class="mt-3"><strong>To Do List</strong></h4>
         <div class="row">
             <div class="col-md-4">
                 <div class="card shadow-sm mb-3">
-                    <div class="card-header bg-info text-white py-2">Jadwal Yang Akan Datang</div>
+                    <div class="card-header bg-info text-white py-2">Jadwal Mendatang</div>
                     <div class="card-body p-3" id="jadwal-menunggu">
                         <p class="text-muted">Memuat jadwal...</p>
                     </div>
@@ -19,7 +19,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card shadow-sm mb-3">
-                    <div class="card-header bg-warning text-white py-2">Proyek Belum Dimulai</div>
+                    <div class="card-header bg-warning text-white py-2">Proyek Belum Selesai</div>
                     <div class="card-body p-3" id="proyek-belum-dimulai">
                         <p class="text-muted">Memuat proyek...</p>
                     </div>
@@ -261,7 +261,7 @@
                                 <div class="card-header bg-info text-white py-2">Total Pendapatan Bulan Ini</div>
                                 <div class="card-body p-3">
                                     <h5 class="mb-0">${formatID(data.total_pendapatan)}</h5>
-                                    <small class="text-muted">Top 5 Pendapatan:</small>
+                                    <small class="text-muted">Pendapatan Tertinggi:</small>
                                     ${renderTop(data.top_pendapatan)}
                                 </div>
                             </div>
@@ -273,7 +273,7 @@
                                 <div class="card-header bg-danger text-white py-2">Total Beban Bulan Ini</div>
                                 <div class="card-body p-3">
                                     <h5 class="mb-0">${formatID(data.total_beban)}</h5>
-                                    <small class="text-muted">Top 5 Beban:</small>
+                                    <small class="text-muted">Beban Tertinggi:</small>
                                     ${renderTop(data.top_beban)}
                                 </div>
                             </div>

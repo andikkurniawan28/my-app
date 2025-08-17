@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Journal;
-use App\Models\JournalDetail;
+use Carbon\Carbon;
 use App\Models\Account;
+use App\Models\Journal;
 use Illuminate\Http\Request;
+use App\Models\JournalDetail;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,9 @@ class JournalController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('date', function ($row) {
-                    return \Carbon\Carbon::parse($row->date)->format('d/m/Y');
+                    $carbon = Carbon::parse($row->date)->locale('id');
+                    $row->date = $carbon->translatedFormat('l, d/m/Y');
+                    return $row->date;
                 })
                 ->editColumn('debit', function ($row) {
                     return number_format($row->debit, 0, ',', '.'); // Format lokal Indonesia
