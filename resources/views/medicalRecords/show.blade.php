@@ -12,7 +12,9 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label class="form-label"><strong>Tanggal</strong></label>
-                    <p>{{ \Carbon\Carbon::parse($medicalRecord->date)->translatedFormat('d F Y') }}</p>
+                    <p>
+                        {{ \Carbon\Carbon::parse($medicalRecord->date)->locale('id')->translatedFormat('l, d/m/Y') }}
+                    </p>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label class="form-label"><strong>Catatan</strong></label>

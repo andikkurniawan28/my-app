@@ -6,8 +6,33 @@
     <div class="container-fluid py-0 px-0">
         <h1 class="h3 mb-4"><strong>Dashboard</strong></h1>
 
+        <!-- Quick Actions -->
+        <h4 class="mt-4"><strong>Quick Actions</strong></h4>
+        <div class="row mb-4">
+            <div class="col-md-3 col-6">
+                <a href="{{ route('journals.create') }}" class="btn btn-outline-primary w-100 shadow-sm mb-2">
+                    <i class="bi bi-journal-text"></i> Catat Jurnal
+                </a>
+            </div>
+            <div class="col-md-3 col-6">
+                <a href="{{ route('projects.create') }}" class="btn btn-outline-success w-100 shadow-sm mb-2">
+                    <i class="bi bi-kanban"></i> Buat Proyek
+                </a>
+            </div>
+            <div class="col-md-3 col-6">
+                <a href="{{ route('tasks.create') }}" class="btn btn-outline-warning w-100 shadow-sm mb-2">
+                    <i class="bi bi-list-task"></i> Buat Tugas
+                </a>
+            </div>
+            <div class="col-md-3 col-6">
+                <a href="{{ route('medicalRecords.create') }}" class="btn btn-outline-danger w-100 shadow-sm mb-2">
+                    <i class="bi bi-heart-pulse"></i> Catat Rekam Medis
+                </a>
+            </div>
+        </div>
+
         <!-- Jadwal, Proyek & Tugas -->
-        <h4 class="mt-3"><strong>To Do List</strong></h4>
+        <h4 class="mt-4"><strong>To Do List</strong></h4>
         <div class="row">
             <div class="col-md-4">
                 <div class="card shadow-sm mb-3">
@@ -34,7 +59,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Keuangan Per Bulan -->
         <h4 class="mt-4"><strong>Keuangan Per Bulan</strong></h4>
