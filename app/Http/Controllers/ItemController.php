@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -15,6 +16,11 @@ class ItemController extends Controller
 
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->editColumn('updated_at', function ($row) {
+                    $carbon = Carbon::parse($row->updated_at)->locale('id');
+                    $row->updated_at = $carbon->translatedFormat('d-m-Y H:i');
+                    return $row->updated_at;
+                })
                 ->addColumn('action', function ($row) {
                     $editUrl = route('items.edit', $row->id);
                     $deleteUrl = route('items.destroy', $row->id);

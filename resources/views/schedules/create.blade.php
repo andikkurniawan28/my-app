@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="start_time" class="form-label">Waktu Mulai</label>
+                    <label for="start_time" class="form-label">Mulai</label>
                     <input type="time" name="start_time" id="start_time"
                            class="form-control @error('start_time') is-invalid @enderror"
                            value="{{ old('start_time') }}" required>
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="finish_time" class="form-label">Waktu Selesai</label>
+                    <label for="finish_time" class="form-label">Selesai</label>
                     <input type="time" name="finish_time" id="finish_time"
                            class="form-control @error('finish_time') is-invalid @enderror"
                            value="{{ old('finish_time') }}" required>

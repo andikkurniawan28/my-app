@@ -21,6 +21,7 @@
                             <th>ID</th>
                             <th>Nama</th>
                             <th>Lokasi Terakhir</th>
+                            <th>Updated terakhir</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -43,6 +44,7 @@
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
                 { data: 'last_location', name: 'last_location' },
+                { data: 'updated_at', name: 'updated_at' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ]
         });
