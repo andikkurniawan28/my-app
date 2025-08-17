@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -38,4 +39,29 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
+
+    public function changePassword()
+    {
+        return view('changePassword');
+    }
+
+    public function changePasswordProcess(Request $request)
+    {
+        $request->validate([
+            'password'              => 'required|string|min:8|confirmed',
+        ], [
+            'password.required'     => 'Password baru wajib diisi.',
+            'password.min'          => 'Password minimal 8 karakter.',
+            'password.confirmed'    => 'Konfirmasi password baru tidak sesuai.',
+        ]);
+
+        $user = Auth::user();
+
+        // Update password baru dengan bcrypt()
+        $user->password = bcrypt($request->password);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Password berhasil diubah!');
+    }
+
 }

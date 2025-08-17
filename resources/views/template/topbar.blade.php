@@ -21,6 +21,7 @@
 
                 <div class="dropdown-menu dropdown-menu-end">
 
+                    <a class="dropdown-item" href="{{ route('changePassword') }}">Ubah Password</a>
                     <a class="dropdown-item" href="{{ route('logout') }}">Log out</a>
 
                 </div>

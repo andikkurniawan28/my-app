@@ -26,6 +26,8 @@ use App\Http\Controllers\MedicalRecordController;
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('login_process');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/changePassword', [AuthController::class, 'changePassword'])->name('changePassword');
+Route::post('/changePassword', [AuthController::class, 'changePasswordProcess'])->name('changePasswordProcess');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index')->middleware(['auth']);
 Route::get('/neracaBulanLaluDanBulanIni', [DashboardController::class, 'neracaBulanLaluDanBulanIni'])->name('dashboard.neracaBulanLaluDanBulanIni');
