@@ -49,7 +49,7 @@ class ItemController extends Controller
 
         Item::create($request->all());
 
-        return redirect()->route('items.index')->with('success', 'Item berhasil ditambahkan.');
+        return redirect()->route('items.index')->with('success', 'Barang Penting berhasil ditambahkan.');
     }
 
     public function edit(Item $item)
@@ -66,12 +66,12 @@ class ItemController extends Controller
 
         $item->update($request->all());
 
-        return redirect()->route('items.index')->with('success', 'Item berhasil diperbarui.');
+        return redirect()->route('items.index')->with('success', 'Barang Penting berhasil diperbarui.');
     }
 
     public function destroy(Item $item)
     {
         $item->delete();
-        return redirect()->route('items.index')->with('success', 'Item berhasil dihapus.');
+        return redirect()->route('items.index')->with('success', 'Barang Penting berhasil dihapus.');
     }
 }

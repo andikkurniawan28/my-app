@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card shadow-sm mb-3">
-                    <div class="card-header bg-info text-white py-2">Jadwal Menunggu</div>
+                    <div class="card-header bg-info text-white py-2">Jadwal Yang Akan Datang</div>
                     <div class="card-body p-3" id="jadwal-menunggu">
                         <p class="text-muted">Memuat jadwal...</p>
                     </div>

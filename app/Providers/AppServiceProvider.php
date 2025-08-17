@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Reset harian jika jam 6 pagi
         now()->hour == 6
-            ? Task::where('tipe', 'harian')->update(['status' => 'belum_dimulai'])
+            ? Task::where('type', 'harian')->update(['status' => 'belum_dimulai'])
             : null;
         }
 }

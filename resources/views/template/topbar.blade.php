@@ -16,12 +16,12 @@
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
                     <img src="/adminkit-main/static/img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1"
-                        alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+                        alt="Charles Hall" /> <span class="text-dark">{{ Auth()->user()->name }}</span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-end">
 
-                    <a class="dropdown-item" href="#">Log out</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}">Log out</a>
 
                 </div>
 

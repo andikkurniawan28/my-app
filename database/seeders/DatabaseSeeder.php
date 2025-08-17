@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
 use App\Models\Account;
 use Illuminate\Database\Seeder;
 
@@ -71,5 +72,9 @@ class DatabaseSeeder extends Seeder
         //     ['name' => 'Biaya Donasi Saudara', 'category' => 'expense', 'description' => 'description', 'normal_balance' => 'debit'],
         //     ['name' => 'Biaya Lain-lain', 'category' => 'expense', 'description' => 'description', 'normal_balance' => 'debit'],
         // ]);
+
+        User::insert([
+            ['username' => 'admin', 'password' => bcrypt('password'), 'name' => 'Admin']
+        ]);
     }
 }
