@@ -41,7 +41,7 @@
             processing: true,
             serverSide: true,
             ajax: "{{ route('tasks.index') }}",
-            order: [[0, 'asc']],
+            order: [[0, 'desc']],
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'title', name: 'title' },
