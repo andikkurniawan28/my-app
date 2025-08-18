@@ -10,23 +10,23 @@
         <h4 class="mt-4"><strong>Quick Actions</strong></h4>
         <div class="row mb-4">
             <div class="col-md-3 col-6">
-                <a href="{{ route('journals.create') }}" class="btn btn-outline-primary w-100 shadow-sm mb-2">
+                <a href="{{ route('journals.create') }}" class="btn btn-primary w-100 shadow-sm mb-2">
                     <i class="bi bi-journal-text"></i> Catat Jurnal
                 </a>
             </div>
             <div class="col-md-3 col-6">
-                <a href="{{ route('projects.create') }}" class="btn btn-outline-success w-100 shadow-sm mb-2">
+                <a href="{{ route('schedules.create') }}" class="btn btn-danger w-100 shadow-sm mb-2">
+                    <i class="bi bi-calendar"></i> Catat Jadwal
+                </a>
+            </div>
+            <div class="col-md-3 col-6">
+                <a href="{{ route('projects.create') }}" class="btn btn-success w-100 shadow-sm mb-2">
                     <i class="bi bi-kanban"></i> Buat Proyek
                 </a>
             </div>
             <div class="col-md-3 col-6">
-                <a href="{{ route('tasks.create') }}" class="btn btn-outline-warning w-100 shadow-sm mb-2">
+                <a href="{{ route('tasks.create') }}" class="btn btn-dark w-100 shadow-sm mb-2">
                     <i class="bi bi-list-task"></i> Buat Tugas
-                </a>
-            </div>
-            <div class="col-md-3 col-6">
-                <a href="{{ route('medicalRecords.create') }}" class="btn btn-outline-danger w-100 shadow-sm mb-2">
-                    <i class="bi bi-heart-pulse"></i> Catat Rekam Medis
                 </a>
             </div>
         </div>
