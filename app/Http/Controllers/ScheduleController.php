@@ -24,6 +24,12 @@ class ScheduleController extends Controller
                     $row->date = $carbon->translatedFormat('l, d/m/Y');
                     return $row->date;
                 })
+                ->editColumn('start_time', function ($row) {
+                    return Carbon::parse($row->start_time)->format('H:i');
+                })
+                ->editColumn('finish_time', function ($row) {
+                    return Carbon::parse($row->finish_time)->format('H:i');
+                })
                 ->addColumn('action', function ($row) {
                     $editUrl = route('schedules.edit', $row->id);
                     $deleteUrl = route('schedules.destroy', $row->id);
