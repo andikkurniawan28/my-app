@@ -23,7 +23,7 @@ class Project extends Model
             ->get()
             ->map(function ($item) {
                 // Set locale Indonesia
-                $carbon = Carbon::parse($item->date)->locale('id');
+                $carbon = Carbon::parse($item->deadline)->locale('id');
 
                 // Format dengan hari
                 $item->deadline = $carbon->translatedFormat('l, d/m/Y');
